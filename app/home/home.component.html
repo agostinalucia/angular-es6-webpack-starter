@@ -1,0 +1,47 @@
+<div>
+    <div>
+        <form>
+            <div class="title-container">
+                <h2 class="title-container__title">GIPHY CATS & DOGS SEARCH</h2>
+            </div>
+            <p class="dropdown-container">
+                <input id="item1" type="radio" ng-model="item.name" ng-change="home.valueChange(item.name, home.pageSizeSelected)" name="cats" value="cats">
+                <label for="item1">CATS</label>
+            </p>
+            <p class="dropdown-container">
+                <input id="item2" type="radio" ng-model="item.name" ng-change="home.valueChange(item.name, home.pageSizeSelected)" name="dogs" value="dogs">
+                <label for="item2">DOGS</label>
+            </p>
+        </form>
+        <ui-view></ui-view>
+        <div class="pagination">
+            <div class="pagination__wrapper-dropdown" ng-class="{'active': home.isOpen}" ng-click="home.isOpen = !home.isOpen">
+                <label class="pagination__wrapper-dropdown__label">Page Size: {{home.pageSizeSelected}}</label>
+                <ul class="dropdown">
+                    <li ng-click="home.pageSizeSelected = 25;home.valueChange(item.name, home.pageSizeSelected)"><a href="#">25</a></li>
+                    <li ng-click="home.pageSizeSelected = 50;home.valueChange(item.name, home.pageSizeSelected)"><a href="#">50</a></li>
+                    <li ng-click="home.pageSizeSelected = 100;home.valueChange(item.name, home.pageSizeSelected)"><a href="#">100</a></li>
+                </ul>
+            </div>
+            <div class="pagination__list" ng-if="home.totalPages">
+                <ul>
+                    <li ng-click="home.goToFirstPage(item.name, home.pageSizeSelected)">First</li>
+                    <li ng-click="home.goToPreviousPage()"><i class="fa fa-arrow-left" aria-hidden="true"></i></li>
+                    <li ng-click="home.goToNextPage()"><i class="fa fa-arrow-right" aria-hidden="true"></i></li>
+                    <li ng-click="home.goToLastPage()">Last</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="images-container">
+        <div class="images-container--empty" ng-if="home.gifs.length === 0">
+            <i class="fa fa-rocket images-container--empty__icon" aria-hidden="true"></i>
+            <p class="images-container--empty__text">Select something for getting started on your search!</p>
+        </div>
+        <div class="images-container--grid" ng-repeat="gif in home.gifs">
+            <div class="images-container--grid__col" ng-style="{'background-color': gif.background}" ng-click="home.goToDetail(gif.id)">
+                <img class="images-container--grid__col__image" src="{{gif.images.downsized.url}}" height="150" width="150">
+            </div>
+        </div>
+    </div>
+</div>

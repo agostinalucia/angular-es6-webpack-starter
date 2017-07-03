@@ -1,0 +1,24 @@
+// colors 
+$light-grey:rgba(158, 158, 158, 0.32);
+$black: black;
+$white: #ffffff;
+$wine: #5c0734;
+$purple: #673AB7;
+$pink: #ff5db1;
+$grey: rgba(255, 255, 255, 0.55);
+// mixins
+@mixin gradient() {
+    background: linear-gradient(to left, $wine 2%, $purple 12%, $pink 47%, $purple 100%) left bottom $black no-repeat;
+}
+
+// font
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+.page-container {
+    background: black;
+    p,
+    span,
+    h2 {
+        font-family: 'Roboto', sans-serif;
+        color: white;
+    }
+}

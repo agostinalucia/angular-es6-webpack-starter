@@ -1,0 +1,224 @@
+@import './../main';
+.title-container {
+    @include gradient();
+    background-position-x: 40px;
+    background-size: 328px 9px;
+    &__title {
+        margin-left: 40px;
+        font-weight: bold;
+        padding-bottom: 10px;
+    }
+}
+
+.dropdown-container {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.pagination {
+    display: flow-root;
+    float: right;
+    &__list {
+        float: right;
+    }
+    &__wrapper-dropdown {
+        display: inline-block;
+        height: 4px;
+        position: relative;
+        width: 122px;
+        margin-right: 48px;
+        margin-top: 17px;
+        margin-left: 5px;
+        padding-top: 6px;
+        padding-bottom: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background: $white;
+        border-radius: 5px;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.3s ease-out;
+        &__label {
+            color: purple;
+            vertical-align: text-top;
+        }
+    }
+    &__wrapper-dropdown:after {
+        content: '';
+        position: absolute;
+        left: 80%;
+        top: 42%;
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid $pink;
+    }
+    &__wrapper-dropdown .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: $white;
+        border-radius: 0 0 5px 5px;
+        border: 1px solid $white;
+        border-top: none;
+        border-bottom: none;
+        list-style: none;
+        transition: all 0.3s ease-out;
+        max-height: 0;
+        overflow: hidden;
+    }
+    &__wrapper-dropdown .dropdown li {
+        padding: 0 10px;
+        display: block;
+    }
+    &__wrapper-dropdown .dropdown li a {
+        display: block;
+        cursor: pointer;
+        text-decoration: none;
+        color: $purple;
+        padding: 10px 0;
+        transition: all 0.3s ease-out;
+    }
+    &__wrapper-dropdown .dropdown li:last-of-type a {
+        border: none;
+    }
+    &__wrapper-dropdown .dropdown li i {
+        margin-right: 5px;
+        color: $white;
+        vertical-align: middle;
+    }
+    &__wrapper-dropdown .dropdown li:hover a {
+        color: $pink;
+    }
+    &__wrapper-dropdown.active {
+        border-radius: 5px 5px 0 0;
+        background: $white;
+        box-shadow: none;
+        border-bottom: none;
+        color: $pink;
+    }
+    &__wrapper-dropdown.active:after {
+        border-color: $purple transparent;
+    }
+    &__wrapper-dropdown.active .dropdown {
+        border-bottom: 1px solid $purple;
+        max-height: 400px;
+        margin-top: 0;
+    }
+}
+
+.images-container {
+    margin-top: 64px;
+    text-align: center;
+    &--empty {
+        border: 1px solid white;
+        border-radius: 5px;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &__icon {
+            color: white;
+            font-size: 110px;
+        }
+        &__text {
+            font-size: 26px;
+            text-align: center;
+        }
+    }
+    &--grid {
+        display: -webkit-flex;
+        display: inline-flex;
+        padding: 10px;
+        height: 0;
+        &__col {
+            height: 150px;
+            cursor: pointer;
+            box-shadow: 0 1px 2px 0 $grey;
+            transition: all .2s ease-in-out;
+        }
+    }
+}
+
+// custom pagination
+.pagination {
+    display: inline-block;
+}
+
+.pagination li {
+    background: $white;
+    color: $pink;
+    list-style: none;
+    display: inline-block;
+    padding: 6px 18px;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.pagination li.active {
+    color: $purple;
+}
+
+.pagination li:hover:not(.active) {
+    background-color: $white;
+    color: $purple;
+}
+
+// custom radios
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="radio"]:checked+label,
+[type="radio"]:not(:checked)+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    line-height: 28px;
+    display: inline-block;
+    color: $white;
+}
+
+[type="radio"]:checked+label:before,
+[type="radio"]:not(:checked)+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border: 1px solid $white;
+    border-radius: 100%;
+    background: $white;
+}
+
+[type="radio"]:checked+label:after,
+[type="radio"]:not(:checked)+label:after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: $pink;
+    position: absolute;
+    top: 5px;
+    left: 4.5px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+[type="radio"]:not(:checked)+label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked+label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
