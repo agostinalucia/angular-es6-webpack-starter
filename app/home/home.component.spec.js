@@ -11,5 +11,13 @@ describe('Home component', () => {
         it('has Last in template', () => {
             expect(template).to.match(/\s?Last\s?/g);
         });
+
+        it('has Empty message in template', () => {
+            expect(template).to.match(/\s?Select something for getting started on your search!\s?/g);
+        });
+
+        it('has First in template', () => {
+            expect(template).to.match(/\s?First\s?/g);
+        });
     });
 });
