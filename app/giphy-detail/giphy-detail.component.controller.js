@@ -4,10 +4,8 @@ export default function giphyController(giphyService, $stateParams) {
     vm.gif = {};
 
     vm.$onInit = () => {
-        console.log(vm.id);
         giphyService.giphyItemDetail(vm.id).then((res) => {
             vm.gif = res.data;
-            console.log(vm.gif);
         });
     }
 }

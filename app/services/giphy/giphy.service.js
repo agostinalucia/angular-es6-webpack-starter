@@ -17,7 +17,6 @@ function giphyService($http, $q) {
                       ${item}&limit=${pageSize}&offset=${pageStart}&rating=G&lang=en`
                     }).then((res) => {
                         const result = res.data;
-                        console.log(result);
                         resolve(result);
                     })
                     .catch(reject);
@@ -27,10 +26,10 @@ function giphyService($http, $q) {
             return $q((resolve, reject) => {
                 $http({
                         method: 'GET',
-                        url: `https://api.giphy.com/v1/gifs/${id}?api_key=8de24567553a491c862a07a0c377ca9f`
+                        url: `https://api.giphy.com/v1/gifs/${id}
+                            ?api_key=8de24567553a491c862a07a0c377ca9f`
                     }).then((res) => {
                         const result = res.data;
-                        console.log(result);
                         resolve(result);
                     })
                     .catch(reject);
