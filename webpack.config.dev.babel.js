@@ -10,7 +10,7 @@ module.exports = new WebpackConfig().extend('./webpack.config.common.babel.js').
     devtool: '#eval',
     entry: {
         bundle: path.join(__dirname, '/app/app.module.js'),
-        vendor: ['angular', 'angular-ui-router'],
+        vendor: ['angular-mocks', 'angular', 'angular-ui-router'],
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js')
